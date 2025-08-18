@@ -13,9 +13,11 @@ from rdkit.Chem import Draw
 import pandas as pd
 
 from model.sacred_model import SACRED
-from model.data_processing import (
-    MolecularFeaturizer, ADMETCalculator,
-    ScaffoldExtractor, SMILESTokenizer
+from model.data_processing_simple import (
+    SimpleMolecularFeaturizer as MolecularFeaturizer,
+    SimpleADMETCalculator as ADMETCalculator,
+    SimpleScaffoldExtractor as ScaffoldExtractor,
+    SimpleSMILESTokenizer as SMILESTokenizer
 )
 from evaluation.metrics import ConstraintEvaluator
 from torch_geometric.data import Batch

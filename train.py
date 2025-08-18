@@ -15,9 +15,12 @@ from tqdm import tqdm
 import json
 
 from model.sacred_model import SACRED, SACREDLoss
-from model.data_processing import (
-    MolecularFeaturizer, ADMETCalculator, 
-    ScaffoldExtractor, DataCollator, SMILESTokenizer
+from model.data_processing_simple import (
+    SimpleMolecularFeaturizer as MolecularFeaturizer,
+    SimpleADMETCalculator as ADMETCalculator,
+    SimpleScaffoldExtractor as ScaffoldExtractor,
+    SimpleDataCollator as DataCollator,
+    SimpleSMILESTokenizer as SMILESTokenizer
 )
 from evaluation.metrics import ConstraintEvaluator, PerformanceTracker
 

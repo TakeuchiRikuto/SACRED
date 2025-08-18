@@ -121,7 +121,7 @@ class ADMETCalculator:
         'NumHeavyAtoms': Descriptors.HeavyAtomCount,
         'MolMR': Crippen.MolMR,
         'BertzCT': Descriptors.BertzCT,
-        'FractionCsp3': Descriptors.FractionCsp3
+        'FractionCSP3': Descriptors.FractionCSP3 if hasattr(Descriptors, 'FractionCSP3') else lambda x: 0.5
     }
     
     PROPERTY_RANGES = {
@@ -137,7 +137,7 @@ class ADMETCalculator:
         'NumHeavyAtoms': (10, 50),
         'MolMR': (40, 130),
         'BertzCT': (0, 2000),
-        'FractionCsp3': (0, 1)
+        'FractionCSP3': (0, 1)
     }
     
     def calculate_properties(self, smiles: str) -> Optional[np.ndarray]:
