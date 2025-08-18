@@ -78,10 +78,18 @@ def minimal_train():
         
         def __getitem__(self, idx):
             smiles = self.data[idx]['smiles']
+            tokens = self.tokenizer.encode(smiles)
+            # Pad tokens to fixed length
+            max_len = 20
+            if len(tokens) < max_len:
+                tokens = tokens + [0] * (max_len - len(tokens))
+            else:
+                tokens = tokens[:max_len]
+            
             return {
                 'smiles': smiles,
-                'tokens': self.tokenizer.encode(smiles),
-                'properties': self.admet.calculate_properties(smiles)
+                'tokens': torch.tensor(tokens, dtype=torch.long),
+                'properties': torch.tensor(self.admet.calculate_properties(smiles), dtype=torch.float32)
             }
     
     # Create simple model
@@ -115,8 +123,8 @@ def minimal_train():
     for epoch in range(3):
         total_loss = 0
         for batch in train_loader:
-            properties = torch.stack([torch.tensor(p, dtype=torch.float32) 
-                                     for p in batch['properties']])
+            # Properties are already tensors now
+            properties = batch['properties']
             
             # Forward pass
             output = model(properties)
