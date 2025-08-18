@@ -1,16 +1,19 @@
+# SACRED Requirements
+# Note: It's recommended to use conda for scientific packages. See setup.sh or environment.yml
+
 # Core dependencies
 torch>=2.0.0
 transformers>=4.30.0
-torch-geometric>=2.3.0
 
-# Molecular processing
-rdkit>=2023.3.0
+# Molecular processing  
 selfies>=2.1.1
+# Note: RDKit should be installed via conda: conda install -c conda-forge rdkit
 
 # Scientific computing
-numpy>=1.24.0
+numpy>=1.24.0,<2.0.0
 pandas>=2.0.0
 scipy>=1.10.0
+scikit-learn>=1.3.0
 
 # Visualization
 matplotlib>=3.7.0
@@ -19,8 +22,6 @@ seaborn>=0.12.0
 # Utilities
 tqdm>=4.65.0
 pyyaml>=6.0
-logging
 
-# Optional for advanced features
-wandb>=0.15.0
-jupyterlab>=4.0.0
+# PyTorch Geometric (requires special installation)
+# See instructions in README.md or setup.sh
