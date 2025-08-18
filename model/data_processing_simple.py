@@ -98,7 +98,7 @@ class SimpleADMETCalculator:
                 Descriptors.NumAromaticRings(mol) / 4,
                 Descriptors.NumHeteroatoms(mol) / 10,
                 Descriptors.RingCount(mol) / 6,
-                Descriptors.FractionCsp3(mol),
+                Descriptors.FractionCsp3(mol) if hasattr(Descriptors, 'FractionCsp3') else 0.5,
                 Descriptors.NumSaturatedRings(mol) / 4,
                 Descriptors.NumAliphaticRings(mol) / 4,
                 0.5,  # Placeholder for QED
