@@ -1,4 +1,20 @@
+# ディレクトリ
 /.claude/
-/checkpoints/*
-/model/__pycache__/*
-/evaluation/__pycache__/*
+/checkpoints/
+__pycache__/
+
+# Pythonキャッシュファイル
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 機械学習モデルファイル（必要に応じて）
+*.pth
+*.h5
+*.pkl
+*.ckpt
+
+# その他（必要に応じて）
+*.log
+.DS_Store
