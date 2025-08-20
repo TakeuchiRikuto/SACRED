@@ -1,5 +1,6 @@
 # ディレクトリ
 /.claude/
+/data/
 /checkpoints/
 __pycache__/
 
