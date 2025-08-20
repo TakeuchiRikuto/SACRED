@@ -1,3 +1,4 @@
 /.claude/
 /checkpoints/*
 /model/__pycache__/*
+/evaluation/__pycache__/*
