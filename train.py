@@ -176,7 +176,7 @@ def main():
     featurizer = MolecularFeaturizer()
     admet_calc = ADMETCalculator()
     tokenizer = SMILESTokenizer()
-    collator = DataCollator(featurizer, admet_calc, tokenizer)
+    collator = DataCollator()  # SimpleDataCollator takes no arguments
     
     # Create datasets
     train_dataset = MolecularDataset(args.train_data, featurizer, admet_calc)

@@ -40,6 +40,9 @@ class ChemBERTaEncoder(nn.Module):
             max_length=512
         )
         
+        # Move inputs to the same device as the model
+        inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
+        
         outputs = self.model(**inputs)
         # Use [CLS] token embedding
         return outputs.last_hidden_state[:, 0, :]
@@ -276,13 +279,13 @@ class SMILESDecoder(nn.Module):
             # Generation mode (autoregressive)
             output = self._generate(latent)
         
-        return self.output_projection(output)
+        return self.output_projection(output) if target is not None else output
     
     def _generate(self, latent: torch.Tensor) -> torch.Tensor:
         batch_size = latent.shape[0]
         device = latent.device
         
-        # Start with BOS token
+        # Start with BOS token (token ID 0)
         generated = torch.zeros(batch_size, 1, dtype=torch.long, device=device)
         
         for i in range(self.max_length - 1):

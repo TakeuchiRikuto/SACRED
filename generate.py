@@ -20,7 +20,7 @@ from model.data_processing_simple import (
     SimpleSMILESTokenizer as SMILESTokenizer
 )
 from evaluation.metrics import ConstraintEvaluator
-from torch_geometric.data import Batch
+from torch_geometric.data import Batch, Data
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -58,11 +58,14 @@ class MoleculeGenerator:
             scaffold = 'c1ccccc1'  # Benzene ring
         
         # Create scaffold graph
-        scaffold_graph = self.featurizer.smiles_to_graph(scaffold)
-        if scaffold_graph is None:
+        scaffold_graph_dict = self.featurizer.smiles_to_graph(scaffold)
+        if scaffold_graph_dict is None:
             logger.error(f"Invalid scaffold: {scaffold}")
             return []
         
+        # Convert dict to Data object
+        scaffold_graph = Data(x=scaffold_graph_dict['x'], 
+                             edge_index=scaffold_graph_dict['edge_index'])
         scaffold_batch = Batch.from_data_list([scaffold_graph]).to(self.device)
         
         # Create property tensor

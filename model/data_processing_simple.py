@@ -75,6 +75,39 @@ class SimpleADMETCalculator:
     
     def __init__(self):
         self.num_properties = 13
+        
+        # Property names and their ranges for normalization
+        self.PROPERTY_FUNCTIONS = {
+            'MW': None,  # Molecular Weight
+            'LogP': None,  # Lipophilicity
+            'HBA': None,  # H-bond acceptors
+            'HBD': None,  # H-bond donors
+            'TPSA': None,  # Topological polar surface area
+            'RotatableBonds': None,  # Number of rotatable bonds
+            'AromaticRings': None,  # Number of aromatic rings
+            'Heteroatoms': None,  # Number of heteroatoms
+            'RingCount': None,  # Total ring count
+            'FractionCsp3': None,  # Fraction of sp3 carbons
+            'SaturatedRings': None,  # Number of saturated rings
+            'AliphaticRings': None,  # Number of aliphatic rings
+            'QED': None,  # Quantitative estimate of drug-likeness
+        }
+        
+        self.PROPERTY_RANGES = {
+            'MW': (0, 500),
+            'LogP': (-5, 5),
+            'HBA': (0, 10),
+            'HBD': (0, 5),
+            'TPSA': (0, 140),
+            'RotatableBonds': (0, 10),
+            'AromaticRings': (0, 4),
+            'Heteroatoms': (0, 10),
+            'RingCount': (0, 6),
+            'FractionCsp3': (0, 1),
+            'SaturatedRings': (0, 4),
+            'AliphaticRings': (0, 4),
+            'QED': (0, 1),
+        }
     
     def calculate_properties(self, smiles: str) -> Optional[np.ndarray]:
         """Calculate molecular properties"""

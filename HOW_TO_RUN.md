@@ -3,25 +3,8 @@
 ## 1. 環境構築
 
 ### 必要な環境
-- Python 3.8以上
-- CUDA 11.0以上（GPU使用時）
 
 ### インストール
-
-```bash
-# SACREDディレクトリに移動
-cd /Users/rikutotakeuchi/my_labo/my_research/SACRED
-
-# 仮想環境作成（推奨）
-python -m venv venv
-source venv/bin/activate  # Mac/Linux
-# または
-venv\Scripts\activate  # Windows
-
-# 依存パッケージインストール
-pip install -r requirements.txt
-```
-
 ## 2. データ準備
 
 ### 方法1: サンプルデータ生成（テスト用）

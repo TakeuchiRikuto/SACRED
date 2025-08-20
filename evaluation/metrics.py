@@ -3,6 +3,7 @@ Comprehensive evaluation metrics for SACRED model
 """
 
 import numpy as np
+import pandas as pd
 import torch
 from rdkit import Chem, DataStructs
 from rdkit.Chem import AllChem, Descriptors, Crippen
@@ -335,7 +336,6 @@ class ConstraintEvaluator:
                        model_results: Dict[str, List[str]],
                        constraints: Dict) -> pd.DataFrame:
         """Compare multiple models on the same constraints"""
-        import pandas as pd
         
         comparison_data = []
         

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#確認のため
 """
 Fixed quick start script for SACRED - Handles batch collation properly
 """
